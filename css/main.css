@@ -1,0 +1,154 @@
+.form{
+    margin-bottom: 40px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.form__select{
+    padding: 5px 20px;
+    border: none;
+    border: 1px solid rgb(245, 224, 188);
+    border-radius: 20px;
+    font-size: 18px;
+}
+
+.input{
+    max-width: 250px;
+    width: 100%;
+    padding: 10px;
+    margin-right: 20px;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 1px 1px 2px 2px rgb(175, 173, 173);
+
+}
+
+button{
+    max-width: 100px;
+    background-color: rgb(143, 188, 165);
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+.films{
+    max-width: 1280px;
+    width: 100%;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.films__list{
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 15px;
+    row-gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.films__item{
+    max-width: 305px;
+    width: 100%;
+    box-shadow: 1px 1px 2px 2px  rgb(175, 179, 177);
+    background-color: rgb(219, 230, 220);
+    padding-bottom: 20px;
+    border-radius: 10px;
+}
+
+.films__img{
+    width: 100%;
+    height: auto;
+}
+
+.films__title{
+    color: rgb(143, 2, 96);
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    margin-top: 20px;
+}
+
+.films__text{
+    color: rgb(6, 13, 83);
+    font-size:15px;
+    margin-bottom: 30px;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+.films__time{
+    font-size: 20px;
+    font-weight: 600;
+    padding-left: 30px;
+    color:rgb(6, 13, 83);
+}
+
+.films__genres{
+    padding-left: 50px;
+    padding-top: 10px;    
+    font-size: 18px;
+    color:rgb(28, 10, 192);
+}
+
+@media only screen and (max-width:1250px){
+    .input{
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (max-width:980px){
+    .films__list{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width:600px){
+    .films__list{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width:600px){
+    .films__form{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .input{
+        max-width: 400px;
+        width: 100%;
+        margin: 0;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        padding: 10px;
+        padding: 10px 0;
+    }
+
+    button{
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (max-width:450px){
+    .films__list{
+        grid-template-columns: 1fr;
+    }
+
+    .films__item{
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    .films__data{
+        padding-left: 80px;
+    }
+
+    .films__genre{
+        padding-left: 100px;
+    }
+}
+
