@@ -5,6 +5,7 @@ var elFilmTemplate = document.querySelector("#films__template").content;
 var elGerneTemlate = document.querySelector("#films-genre").content;
 var elSelect = document.querySelector(".form__select");
 
+// time normalize numbers -> time  
 function normalizeDate (dateFormat) {
 
     let date = new Date (dateFormat);
@@ -15,8 +16,43 @@ function normalizeDate (dateFormat) {
     return (day + '.' + month + '.' + year);
 }
 
+// genereteGenre 
+const genereteGenre = (array) => {
+    const genres = [];
+
+    array.forEach((film) =>{
+        film.genres.forEach((genre) =>{
+            if(!genres.includes(genre)){
+                genres.push(genre);
+            }
+        });
+    });
+    return genres;
+}
+
+// selectni ekranga chiqarish
+const renderSelect = (array, element)=>{
+    element.innerHTML= null;
+
+    array.forEach((genre)=>{
+        const newOption = document.createElement("option");
+        newOption.value=genre;
+        newOption.textContent = genre;
+        element.appendChild(newOption);
+    })
+}
+renderSelect(genereteGenre(films),elSelect);
 
 
+
+// add All-options
+function firstOption(option) {
+    const newOption = document.querySelector("option");
+    newOption.value = "All";
+    newOption.textContent = "All";
+}
+
+// genres generate template
 function renderGernes(array, element){
     element.innerHTML = null;
 
@@ -27,9 +63,10 @@ function renderGernes(array, element){
         genreTemplate.querySelector(".genres__item").textContent = genre;
 
         element.appendChild(genreTemplate);
-    })
+    });
 }
 
+// films render
 function renderFilms(array, element){
     element.innerHTML = null;
         
@@ -48,17 +85,32 @@ function renderFilms(array, element){
         renderGernes(film.genres, elGenres);
 
         element.appendChild(filmsTemplate);  
-})
+});
 }
 
-elForm.addEventListener("submit", (evt)=>{
-    evt.preventDefault();
-
-   
-   
-});
 
 renderFilms(films,elList);
 
+firstOption();
 
+// form SubmitEvent
+elForm.addEventListener("submit", (evt) => {
+    evt.preventDefault()
+
+    let selectArray = []
+
+    // genres tekshirish
+    films.forEach(film => {
+
+        if(elSelect.value == 'All') {
+            selectArray.push(film)
+        }
+
+        else if (film.genres.includes(elSelect.value)) {
+            selectArray.push(film)
+        }
+});
+
+    renderFilms(selectArray, elList)
+});
 
