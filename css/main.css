@@ -12,6 +12,17 @@
     font-size: 18px;
 }
 
+.form__input{
+    padding: 5px 20px;
+    border: none;
+    border: 1px solid rgb(245, 224, 188);
+    border-radius: 20px;
+    font-size: 18px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+}
+
 .input{
     max-width: 250px;
     width: 100%;
@@ -22,6 +33,17 @@
     border: none;
     box-shadow: 1px 1px 2px 2px rgb(175, 173, 173);
 
+}
+
+.film-select-sort{
+    max-width: 150px;
+    width: 100%;
+    padding: 10px;
+    margin-right: 20px;
+    text-align: center;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 1px 1px 2px 2px rgb(175, 173, 173);
 }
 
 button{
@@ -140,7 +162,7 @@ button{
     }
 
     .films__item{
-        max-width: 420px;
+        max-width: 400px;
         margin: 0 auto;
     }
 

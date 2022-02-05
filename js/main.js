@@ -4,6 +4,8 @@ var elList = document.querySelector(".films__list");
 var elFilmTemplate = document.querySelector("#films__template").content;
 var elGerneTemlate = document.querySelector("#films-genre").content;
 var elSelect = document.querySelector(".form__select");
+var elInput = document.querySelector(".form__input");
+var elFilmSelectSort = document.querySelector(".film-select-sort");
 
 // time normalize numbers -> time  
 function normalizeDate (dateFormat) {
@@ -95,22 +97,70 @@ firstOption();
 
 // form SubmitEvent
 elForm.addEventListener("submit", (evt) => {
-    evt.preventDefault()
+    evt.preventDefault();
 
-    let selectArray = []
+    let newarray = []
 
     // genres tekshirish
     films.forEach(film => {
 
         if(elSelect.value == 'All') {
-            selectArray.push(film)
+            newarray.push(film)
         }
 
         else if (film.genres.includes(elSelect.value)) {
-            selectArray.push(film)
+            newarray.push(film);
         }
-});
+    });
+  
+    renderFilms(newarray, elList);
 
-    renderFilms(selectArray, elList)
-});
 
+
+  
+    let sortValue = elFilmSelectSort.value.trim();
+    
+    if (sortValue === 'a_z') {
+        newarray.sort((a, b) => {
+            if (a.title > b.title) {
+                return 1;
+			} else if (a.title < b.title) {
+                return -1;
+			} else {
+				return 0;
+			}
+		});
+	} else if (sortValue === 'z_a') {
+        newarray.sort((a, b) => {
+            if (a.title < b.title) {
+                return 1;
+			} else if (a.title > b.title) {
+                return -1;
+			} else {
+                return 0;
+			}
+		});
+	} else if (sortValue === 'old_new') {
+        newarray.sort((a, b) => {
+            if (a.release_date > b.release_date) {
+                return 1;
+			} else if (a.release_date < b.release_date) {
+                return -1;
+			} else {
+                return 0;
+			}
+		});
+	} else if (sortValue === 'new_old') {
+        newarray.sort((a, b) => {
+            if (a.release_date < b.release_date) {
+                return 1;
+			} else if (a.release_date > b.release_date) {
+                return -1;
+			} else {
+                return 0;
+			}
+		});
+	}
+    
+    renderFilms(newarray, elList);
+});
